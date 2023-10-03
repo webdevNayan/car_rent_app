@@ -1,0 +1,54 @@
+.car_grid {
+    display: grid;
+    grid-template-columns: 33% 33% 33%;
+    justify-content: center;
+}
+
+.page_background {
+
+    background: #edf1f6;
+
+}
+
+.header_section {
+
+    padding: 0.5rem 1rem;
+
+    margin: 0rem 1.5rem;
+   
+
+    position: relative;
+    border-radius: 1rem;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+
+
+    input {
+        padding: 0.5rem 1rem;
+        width: 20rem;
+
+        border: none;
+        outline: none;
+        border-radius: 1rem;
+    }
+
+    select {
+
+        margin: 1rem;
+
+        border: none;
+        outline: none;
+
+        background: #edf1f6;
+    }
+
+
+}
+
+.search {
+    width: auto;
+    height: 2rem;
+
+    position: absolute;
+    left: 18.5rem;
+    top: 1.2rem;
+}

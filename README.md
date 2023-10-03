@@ -68,3 +68,18 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+
+- Cars can be searched and paginated through. You can ignore
+the Relevance and All Brands filter.
+- Car cards are listed 3 on each row and a time 6 cards should
+be shown
+- Each car card should be designed as it is seen in the image
+(not pixel-perfect but should look similar)
+- The search should work on the car name.
+- On the pagination, the URL should change to page/:page for
+example. page/1 -> default, page/2, etc.
+- Show only 10 pages for the pagination, it should be hard
+coded 10, and should not depend on the car count.
+- Pagination should have the next and previous buttons along
+with the numbers and it should be fully functional
