@@ -549,6 +549,7 @@ let carData = [
         transmission: "Automatic",
         price: 620,
     },
+    
 ];
 
 module.exports = carData;

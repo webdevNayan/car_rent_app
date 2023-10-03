@@ -7,7 +7,7 @@ import { Container } from 'react-bootstrap';
 export default function CarPage() {
     const [filteredData, setFilteredData] = useState(carData);
     const [currentPage, setCurrentPage] = useState(1);
-    const [postsPerPage, setPostsPerPage] = useState(6); 
+    const [postsPerPage, setPostsPerPage] = useState(6);
     const maxPaginationLinks = 10;
 
     useEffect(() => {
@@ -15,10 +15,10 @@ export default function CarPage() {
     }, [filteredData]);
 
     const totalPosts = filteredData.length;
-    const totalPaginationLinks = Math.max(
-        Math.ceil(totalPosts / postsPerPage),
-        maxPaginationLinks
-    );
+    const totalPages = Math.ceil(totalPosts / postsPerPage);
+
+    // Calculate the total number of pagination links
+    const totalPaginationLinks = Math.max(totalPages, maxPaginationLinks);
 
     const indexOfLastPost = currentPage * postsPerPage;
     const indexOfFirstPost = indexOfLastPost - postsPerPage;
@@ -27,36 +27,37 @@ export default function CarPage() {
     const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
     const searchHandler = (e) => {
-        const searchQuery = e.target.value;
+        const searchQuery = e.target.value.toLowerCase();
         setFilteredData(
-            carData.filter((item) => item.carName.includes(searchQuery))
+            carData.filter((item) => item.carName.toLowerCase().includes(searchQuery))
         );
     };
 
     return (
         <div className={car_css.page_background}>
             <Container>
-            <div className={car_css.header_section}>
+                <div className={car_css.header_section}>
+                    <input
+                        type="text"
+                        placeholder='Search...'
+                        onChange={searchHandler}
+                    />
 
-                <input type="text" placeholder='Search...'
-                    onChange={searchHandler}
-                />
+                    <img src="./search.JPG" alt="search cars" className={car_css.search} />
 
-                <img src="./search.JPG" alt="search cars" className={car_css.search} />
+                    <select name="cars" id="cars">
+                        <option value="volvo">Relevance</option>
+                        <option value="saab">Saab</option>
+                        <option value="opel">Opel</option>
+                        <option value="audi">Audi</option>
+                    </select>
 
-                <select name="cars" id="cars">
-                    <option value="volvo">Relevance</option>
-                    <option value="saab">Saab</option>
-                    <option value="opel">Opel</option>
-                    <option value="audi">Audi</option>
-                </select>
-
-                <select name="cars" id="cars">
-                    <option value="volvo">All Brands</option>
-                    <option value="saab">Saab</option>
-                    <option value="opel">Opel</option>
-                    <option value="audi">Audi</option>
-                </select>
+                    <select name="cars" id="cars">
+                        <option value="volvo">All Brands</option>
+                        <option value="saab">Saab</option>
+                        <option value="opel">Opel</option>
+                        <option value="audi">Audi</option>
+                    </select>
                 </div>
 
                 <div className={car_css.car_grid}>
@@ -79,7 +80,7 @@ export default function CarPage() {
                     )}
                 </div>
 
-                {totalPosts > 0 && (
+                {totalPages > 0 && (
                     <nav>
                         <ul className="pagination">
                             <li className={`page-item ${currentPage === 1 ? 'disabled' : ''}`}>
@@ -96,7 +97,7 @@ export default function CarPage() {
                                 </li>
                             ))}
                             <li
-                                className={`page-item ${currentPage === totalPaginationLinks ? 'disabled' : ''}`}
+                                className={`page-item ${currentPage === totalPages ? 'disabled' : ''}`}
                             >
                                 <button className="page-link" onClick={() => paginate(currentPage + 1)}>Next</button>
                             </li>
