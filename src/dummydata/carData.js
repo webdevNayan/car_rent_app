@@ -1,7 +1,7 @@
 let carData = [
     {
         id: 0,
-        carImg1: "./toyota_rv.JPG",
+        carImg1: "",
         carName: "Toyota RAV 4 (ID: 0)",
         manufacturingYear: 2021,
         seatingCapasity: "4",
